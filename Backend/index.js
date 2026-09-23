@@ -1,21 +1,26 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./db.js";
+import { connectDB } from "./config/database.js";
+import productRouter from "./router/productRouter.js";
 
-connectDB();
-dotenv.config({path:"./.env"});
-const PORT=process.env.BACKEND_PORT
+dotenv.config();
+const PORT = process.env.BACKEND_PORT;
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/products", productRouter);
+
+connectDB();
+
 app.get("/", (req, res) => {
-    return res
+  return res
     .status(200)
-    .send("<h>Restful API for Product Management App</h>");
+    .send("<h> Welcome to Restful API Product Management App</h>");
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on : http://localhost:${PORT}`);
+  console.log(`Server is running on: http://localhost:${PORT}`);
 });
