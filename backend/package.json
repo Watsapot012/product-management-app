@@ -9,7 +9,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Watsapot Sriployrung",
+  "author": "Worachet Uttha",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
